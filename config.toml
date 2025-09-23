@@ -1,0 +1,11 @@
+[settings]
+api_key = ""
+default_model = ""
+
+[models]
+ternary_elegance = "models/ternary_elegance.py"
+e8_triality = "models/e8_triality.py"
+phi_scaling = "models/phi_scaling.py"
+
+[ui]
+theme = "dark"
