@@ -1,3 +1,7 @@
+# Rust
+/target/
+Cargo.lock
+
 # Logs
 logs
 *.log
@@ -137,3 +141,8 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+
+# Added by cargo
+
+/target
