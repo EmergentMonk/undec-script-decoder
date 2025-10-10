@@ -1,122 +1,123 @@
-# Grok TUI - Terminal User Interface for Grok Model Management
+# Grok Physics Models TUI
 
-A Rust-based terminal user interface (TUI) application for managing Grok model files and interacting with Grok AI models via API.
+🔬 A Text User Interface (TUI) for managing and interacting with Grok physics models.
+
+## Overview
+
+This application provides a terminal-based interface for managing Python-based physics models. The models represent various physics concepts including "Ternary Elegance," "E8 triality," and "φ-scaling" as described in the repository description.
 
 ## Features
 
-- **Model File Management**: Add and manage .py Grok model files
-- **API Key Configuration**: Securely set and manage your Grok API key
-- **Model Interaction**: Interface with different Grok models through the API
-- **Cross-platform**: Uses ncurses for terminal compatibility
+- **Model Management**: Discover and list Python model files in the `models/` directory
+- **Interactive Execution**: Run models with JSON input and view formatted output
+- **Configuration Management**: Store API keys and settings in `config.toml`
+- **Terminal UI**: Navigate using keyboard controls with a clean, organized interface
 
-## Installation
+## Project Structure
 
-### Prerequisites
-
-- Rust (1.70 or later)
-- ncurses development libraries
-
-On Ubuntu/Debian:
-```bash
-sudo apt-get install libncurses5-dev libncursesw5-dev
 ```
-
-On macOS:
-```bash
-brew install ncurses
-```
-
-### Building
-
-```bash
-cargo build --release
-```
-
-### Running
-
-```bash
-cargo run
+grok/
+├── src/                    # Rust source code
+│   ├── main.rs            # Main application entry point
+│   ├── config.rs          # Configuration management
+│   ├── model_executor.rs  # Python model execution
+│   └── ui.rs              # TUI interface
+├── models/                # Python physics models
+│   ├── ternary_elegance.py
+│   ├── e8_triality.py
+│   └── phi_scaling.py
+├── config.toml           # Configuration file
+├── Cargo.toml           # Rust dependencies
+└── README.md            # This file
 ```
 
 ## Usage
 
-### Main Menu
+### Building and Running
 
-The application starts with a main menu offering four options:
+```bash
+# Build the application
+cargo build --release
 
-1. **Manage Model Files (.py)**: Add and view Python model files
-2. **Set API Key**: Configure your Grok API key
-3. **Interact with Grok Models**: Select and interact with available models
-4. **Quit**: Exit the application
+# Run the application
+cargo run
+# or
+./target/release/grok-tui
+```
 
 ### Navigation
 
-- **↑/↓ Arrow Keys**: Navigate between menu items
-- **Enter**: Select the highlighted option
-- **ESC**: Return to the main menu (from sub-screens)
-- **q**: Quit the application (from main menu)
+- **↑/↓**: Navigate through menus and lists
+- **Enter**: Select items or confirm actions
+- **Esc**: Go back to previous screen
+- **Tab**: Switch between input modes (when editing)
+- **'q'**: Quit the application
 
-### Configuration
+### Model Interaction
 
-The application stores configuration in:
-- Linux/macOS: `~/.config/grok-tui/config.json`
-- Windows: `%APPDATA%/grok-tui/config.json`
+1. **Browse Models**: Select "Browse Models" from the main menu
+2. **Choose Model**: Select a model from the list
+3. **Input Data**: Enter JSON input for the model (e.g., `{"energy": 2.0}`)
+4. **Execute**: Press Enter to run the model
+5. **View Results**: Review the formatted output
 
-Configuration includes:
-- API key (encrypted storage recommended for production)
-- List of managed model files
-- Available Grok models
+### Adding New Models
 
-## Example Model File
+1. Place Python files (`.py`) in the `models/` directory
+2. Use "Refresh Models" from the main menu to detect new files
+3. Models should:
+   - Accept JSON input as command line argument
+   - Return JSON output to stdout
+   - Handle errors gracefully
 
-See `examples/example_grok_model.py` for a sample Python model file demonstrating:
-- Ternary Elegance principles
-- E8 triality operations
-- φ-scaling calculations
+## Model Examples
 
-## Model Files
+### Ternary Elegance
+Explores ternary relationships in fundamental constants using the golden ratio.
 
-The TUI can manage Python files containing Grok models. These files should contain:
-
-- Physics model implementations
-- Mathematical operations related to the models
-- Any supporting functions or classes
-
-## API Integration
-
-The application supports interaction with Grok models including:
-- `grok-beta`: Standard Grok model
-- `grok-vision-beta`: Vision-capable Grok model
-
-**Note**: This demo version simulates API interactions. A production version would implement actual HTTP requests to the Grok API endpoints.
-
-## Development
-
-### Project Structure
-
-```
-src/
-├── main.rs          # Main application logic and TUI implementation
-examples/
-├── example_grok_model.py  # Sample model file
-Cargo.toml          # Rust dependencies
+```bash
+python3 models/ternary_elegance.py '{"energy": 2.0}'
 ```
 
-### Dependencies
+### E8 Triality
+Investigates E8 Lie group triality relationships in physics.
 
-- `pancurses`: Cross-platform ncurses library
-- `serde`: Serialization framework for configuration
-- `serde_json`: JSON support for configuration files
-- `dirs`: Cross-platform directory paths
-- `anyhow`: Error handling
+```bash
+python3 models/e8_triality.py '{"x": 1.0, "y": 1.0, "z": 1.0}'
+```
 
-## Contributing
+### Phi Scaling
+Analyzes golden ratio scaling patterns in natural phenomena.
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test the TUI application
-5. Submit a pull request
+```bash
+python3 models/phi_scaling.py '{"scale": 2.0, "dimension": 3}'
+```
+
+## Configuration
+
+Edit `config.toml` to customize:
+
+- **API Keys**: Store external API credentials
+- **Default Model**: Set a preferred default model
+- **UI Theme**: Choose interface appearance
+
+## Requirements
+
+- Rust (2021 edition or later)
+- Python 3.6+
+- Terminal with Unicode support
+
+## Dependencies
+
+### Rust
+- `ratatui`: Terminal UI framework
+- `crossterm`: Cross-platform terminal manipulation
+- `serde` & `toml`: Configuration serialization
+- `tokio`: Async runtime
+- `clap`: Command line parsing
+
+### Python
+- Standard library only (no external dependencies for included models)
 
 ## License
 
