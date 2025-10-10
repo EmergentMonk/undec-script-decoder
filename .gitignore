@@ -1,3 +1,7 @@
+# Rust
+/target/
+Cargo.lock
+
 # Logs
 logs
 *.log
@@ -137,15 +141,6 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-
-# Rust build artifacts
-/target/
-Cargo.lock
-
-# Python cache
-__pycache__/
-*.py[cod]
-*$py.class
 
 
 # Added by cargo
