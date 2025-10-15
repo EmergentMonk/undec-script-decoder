@@ -1,0 +1,1 @@
+"Expected decoded output from the Harappan script input"
